@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import './Header.css';
 import MainLogo from '../svg/MainLogo';
 import Navigation from '../Navigation/Navigation';
 import SignInBtn from '../ui/SignInBtn/SignInBtn';
 import ProfileBtn from '../ui/ProfileBtn/ProfileBtn';
+import BurgerMenuBtn from '../ui/BurgerMenuBtn/BurgerMenuBtn';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import './Header.css';
 
 function Header() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -13,10 +15,15 @@ function Header() {
     setWidth(window.innerWidth);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('resize', updateWidth);
     return () => window.removeEventListener('resize', updateWidth);
   });
+
+  const isMobile = width <= 768;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const handleBurgerMenuClick = () => setIsOpen(!isOpen);
 
   return (
     <header className="header">
@@ -27,7 +34,11 @@ function Header() {
         <MainLogo />
       </Link>
 
-      {width <= 768 ? (<h3>BURGER</h3>) : (
+      <Route exact path={['/movies', '/saved-movies', '/profile']}>
+        {isMobile ? (<BurgerMenuBtn handleClick={handleBurgerMenuClick} />) : null}
+      </Route>
+
+      {!isMobile ? (
         <div className="header__nav-wrapper">
           <Navigation />
 
@@ -41,6 +52,10 @@ function Header() {
             </Route>
           </Switch>
         </div>
+      ) : (
+        <Route exact path={['/movies', '/saved-movies', '/profile']}>
+          <BurgerMenu isOpen={isOpen} closeHandler={handleBurgerMenuClick} />
+        </Route>
       )}
 
     </header>
