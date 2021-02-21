@@ -8,6 +8,9 @@ import BurgerMenuBtn from '../ui/BurgerMenuBtn/BurgerMenuBtn';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import './Header.css';
 
+// на 3м этапе сделать рефакторинг с условным рендером,
+// прим: {!isLoggedIn ? <SignInBtn /> : <ProfileBtn />}
+
 function Header() {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -38,26 +41,29 @@ function Header() {
         {isMobile ? (<BurgerMenuBtn handleClick={handleBurgerMenuClick} />) : null}
       </Route>
 
-      {!isMobile ? (
-        <div className="header__nav-wrapper">
-          <Navigation />
+      <Switch>
 
-          <Switch>
-            <Route exact path="/">
-              <SignInBtn />
-            </Route>
+        <Route exact path="/">
+          <div className="header__nav-wrapper">
+            <Navigation />
+            <SignInBtn />
+          </div>
+        </Route>
 
-            <Route exact path={['/movies', '/saved-movies', '/profile']}>
+        {!isMobile ? (
+          <Route exact path={['/movies', '/saved-movies', '/profile']}>
+            <div className="header__nav-wrapper">
+              <Navigation />
               <ProfileBtn />
-            </Route>
-          </Switch>
-        </div>
-      ) : (
+            </div>
+          </Route>
+        ) : null}
+
         <Route exact path={['/movies', '/saved-movies', '/profile']}>
           <BurgerMenu isOpen={isOpen} closeHandler={handleBurgerMenuClick} />
         </Route>
-      )}
 
+      </Switch>
     </header>
   );
 }
