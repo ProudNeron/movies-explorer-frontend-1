@@ -1,0 +1,36 @@
+.about-project {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 110px 70px;
+}
+
+.about-project__title {
+  width: 100%;
+  margin: 0 0 70px;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #DADADA;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: #FFF;
+}
+
+.about-project__article-wrapper {
+
+}
+
+.about-project__article {
+
+}
+
+.about-project__article-title {
+
+}
+
+.about-project__article-text {
+
+}
