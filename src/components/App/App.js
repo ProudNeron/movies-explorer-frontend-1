@@ -1,7 +1,8 @@
-import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
+import './App.css';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
             <Main />
           </Route>
         </Switch>
+
+        <Footer />
 
       </div>
 
