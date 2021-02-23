@@ -21,6 +21,12 @@ function AboutProject() {
           </p>
         </article>
       </div>
+      <div className="about-project__timeline-grid">
+        <div className="about-project__backend-time">1 неделя</div>
+        <div className="about-project__frontend-time">4 недели</div>
+        <div className="about-project__backend-title">Back-end</div>
+        <div className="about-project__frontend-title">Front-end</div>
+      </div>
     </section>
   );
 }
