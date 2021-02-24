@@ -37,7 +37,7 @@ function Header() {
         <MainLogo />
       </Link>
 
-      <Route exact path={['/movies', '/saved-movies', '/profile']}>
+      <Route path={['/movies', '/saved-movies', '/profile']}>
         {isMobile ? (<BurgerMenuBtn handleClick={handleBurgerMenuClick} />) : null}
       </Route>
 
@@ -51,7 +51,7 @@ function Header() {
         </Route>
 
         {!isMobile ? (
-          <Route exact path={['/movies', '/saved-movies', '/profile']}>
+          <Route path={['/movies', '/saved-movies', '/profile']}>
             <div className="header__nav-wrapper">
               <Navigation />
               <ProfileBtn />

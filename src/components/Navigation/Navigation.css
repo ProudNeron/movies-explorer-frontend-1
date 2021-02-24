@@ -27,3 +27,10 @@
 .navigation__link_is-active {
   font-weight: 500;
 }
+
+@media screen and (max-width: 320px) {
+  .navigation__link {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}

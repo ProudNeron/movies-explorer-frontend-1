@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer">
       <p className="footer__main-text">Учебный проект Яндекс.Практикум х BeatFilm.</p>
       <div className="footer__rights-content-wrapper">
-        <p className="footer__copyrights">© 2020</p>
+        <p className="footer__copyrights">&copy; 2021</p>
         <ul className="footer__rights-list">
           <li className="footer__rights-item">
             <a
