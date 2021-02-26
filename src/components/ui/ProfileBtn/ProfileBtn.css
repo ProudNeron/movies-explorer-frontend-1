@@ -1,12 +1,14 @@
 .profile-btn {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100px;
   height: 32px;
-  margin-left: 50px;
+  padding-left: 11px;
+  box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  line-height: 1.3;
+  font-size: 13px;
+  line-height: .9;
   font-weight: 500;
   font-style: normal;
   color: #FFF;

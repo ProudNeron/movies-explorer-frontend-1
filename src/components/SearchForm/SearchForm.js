@@ -4,7 +4,7 @@ import './SearchForm.css';
 
 function SearchForm() {
   return (
-    <section className="search-form">
+    <div className="search-form">
       <div className="search-form__search-input-wrapper">
         <input
           className="search-form__text-input"
@@ -17,7 +17,7 @@ function SearchForm() {
         <p className="search-form__shorts-title">Короткометражки</p>
         <FilterCheckbox />
       </div>
-    </section>
+    </div>
   );
 }
 

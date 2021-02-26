@@ -44,7 +44,7 @@ function Header() {
       <Switch>
 
         <Route exact path="/">
-          <div className="header__nav-wrapper">
+          <div className="header__nav-wrapper header__nav-wrapper_type_unauth">
             <Navigation />
             <SignInBtn />
           </div>
@@ -52,7 +52,7 @@ function Header() {
 
         {!isMobile ? (
           <Route path={['/movies', '/saved-movies', '/profile']}>
-            <div className="header__nav-wrapper">
+            <div className="header__nav-wrapper header__nav-wrapper_type_auth">
               <Navigation />
               <ProfileBtn />
             </div>

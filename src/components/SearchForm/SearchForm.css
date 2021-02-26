@@ -3,8 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding-top: 80px;
-  padding-bottom: 83px;
+  padding: 80px 70px 83px;
+  box-sizing: border-box;
   border-bottom: 1px solid rgba(170,170,170, .2);
   font-family: 'Inter', sans-serif;
   font-style: normal;
