@@ -3,7 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding: 80px 70px 83px;
+  padding: 80px 0 83px 0;
+  /*padding: 80px 70px 83px;*/
   box-sizing: border-box;
   border-bottom: 1px solid rgba(170,170,170, .2);
   font-family: 'Inter', sans-serif;
@@ -77,4 +78,16 @@
   margin: 0;
   font-size: 13px;
   line-height: 1.38;
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0 57px 0;
+  }
+
+  .search-form__search-input-wrapper {
+    margin-bottom: 38px;
+  }
 }
