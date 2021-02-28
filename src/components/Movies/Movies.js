@@ -5,7 +5,7 @@ import Preloader from '../Preloader/Preloader';
 import './Movies.css';
 
 // Массив временных карточек для сдачи этапа верстки
-import { cardList } from '../../data/tempCards';
+import { tempCards } from '../../data/tempCards';
 
 function Movies() {
   // Блок функция для 2го этапа. Показывает прелоадер
@@ -19,7 +19,9 @@ function Movies() {
   return (
     <div className="movies">
       <SearchForm />
-      {isLoading ? <Preloader /> : <MoviesCardList moviesData={cardList} isRenderInSaved />}
+      {isLoading
+        ? <Preloader />
+        : <MoviesCardList moviesData={tempCards} isRenderInSaved={false} enableLoadMoreBtn />}
     </div>
   );
 }

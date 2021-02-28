@@ -1,8 +1,9 @@
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import LoadMoreBtn from '../ui/LoadMoreBtn/LoadMoreBtn';
 import './MoviesCardList.css';
 
-function MoviesCardList({ moviesData, isRenderInSaved }) {
+function MoviesCardList({ moviesData, isRenderInSaved, enableLoadMoreBtn }) {
   // isRenderInSaved - поднятие стейта в родительский компонен, где будет рендерится
   return (
     <section className="movies-card-list">
@@ -17,9 +18,7 @@ function MoviesCardList({ moviesData, isRenderInSaved }) {
           </li>
         ))}
       </ul>
-      <div className="movies-card-list__more-btn-wrapper">
-        <button className="movies-card-list__more-btn" type="button">Ещё</button>
-      </div>
+      {enableLoadMoreBtn ? <LoadMoreBtn /> : null}
     </section>
   );
 }

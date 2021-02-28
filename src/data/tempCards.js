@@ -11,7 +11,7 @@ import tempCard9 from '../images/tempCardsImages/tempCard-9.jpg';
 import tempCard10 from '../images/tempCardsImages/tempCard-10.jpg';
 import tempCard11 from '../images/tempCardsImages/tempCard-11.jpg';
 
-export const tempCards = [
+const tempCards = [
   {
 
     id: 1,
@@ -88,4 +88,27 @@ export const tempCards = [
   },
 ];
 
-export { tempCards as cardList };
+const tempSavedCards = [
+  {
+
+    id: 1,
+    title: '33 слова о дизайне',
+    duration: '1ч 47м',
+    img: tempCard0,
+
+  },
+  {
+    id: 2,
+    title: '33 слова о дизайне',
+    duration: '1ч 47м',
+    img: tempCard1,
+  },
+  {
+    id: 3,
+    title: '33 слова о дизайне',
+    duration: '1ч 47м',
+    img: tempCard2,
+  },
+];
+
+export { tempCards, tempSavedCards };
