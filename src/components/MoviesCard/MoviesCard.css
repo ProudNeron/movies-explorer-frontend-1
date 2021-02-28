@@ -57,9 +57,16 @@
   height: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 .movie-card {
   width: 339px;
   height: 258px;
 }
+}
+
+@media screen and (max-width: 320px) {
+  .movie-card {
+    width: 300px;
+    height: 236px;
+  }
 }
