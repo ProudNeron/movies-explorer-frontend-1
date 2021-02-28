@@ -4,29 +4,35 @@ import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import NotFound from '../NotFound/NotFound';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <div className="page-container">
-        <Header />
 
         <Switch>
           <Route exact path="/">
+            <Header />
             <Main />
+            <Footer />
           </Route>
 
           <Route path="/movies">
+            <Header />
             <Movies />
+            <Footer />
           </Route>
 
           <Route path="/saved-movies">
+            <Header />
             <SavedMovies />
+            <Footer />
           </Route>
-        </Switch>
 
-        <Footer />
+          <Route component={NotFound} />
+        </Switch>
 
       </div>
 
