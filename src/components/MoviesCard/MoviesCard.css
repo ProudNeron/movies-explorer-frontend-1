@@ -1,5 +1,4 @@
 .movie-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,7 +9,12 @@
 }
 
 .movie-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   padding: 14px;
+  box-sizing: border-box;
 }
 
 .movie-card__title {
@@ -26,30 +30,6 @@
   line-height: 1.18;
   font-weight: 400;
   color: #8B8B8B;
-}
-
-.movie-card__bookmark-btn {
-  position: absolute;
-  top: 19px;
-  right: 14px;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 50%;
-  background-image: url('../../images/bookmark-icon-not-added.svg');
-  background-color: transparent;
-}
-
-.movie-card__bookmark-btn_is-added {
-  background-image: url('../../images/bookmark-icon-is-added.svg');
-}
-
-.movie-card__bookmark-btn:hover {
-  cursor: pointer;
-}
-
-.movie-card__bookmark-btn:focus {
-  outline: none;
 }
 
 .movie-card__image {

@@ -2,18 +2,17 @@ import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
-// Массив временных карточек для сдачи этапа верстки
-import { cardList } from '../../data/tempCards';
-
-function MoviesCardList() {
+function MoviesCardList({ moviesData, isRenderInSaved }) {
+  // isRenderInSaved - поднятие стейта в родительский компонен, где будет рендерится
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__list">
-        {cardList.map((cardData) => (
-          <li className="movies-card-list__item" key={cardData.id}>
+        {moviesData.map((movieData) => (
+          <li className="movies-card-list__item" key={movieData.id}>
             <MoviesCard
-              key={cardData.id}
-              cardData={cardData}
+              key={movieData.id}
+              cardData={movieData}
+              isRenderInSaved={isRenderInSaved}
             />
           </li>
         ))}
