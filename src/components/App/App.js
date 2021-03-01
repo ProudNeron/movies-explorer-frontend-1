@@ -5,6 +5,7 @@ import Movies from '../Movies/Movies';
 import Footer from '../Footer/Footer';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import NotFound from '../NotFound/NotFound';
+import Profile from '../Profile/Profile';
 import './App.css';
 
 function App() {
@@ -29,6 +30,11 @@ function App() {
             <Header />
             <SavedMovies />
             <Footer />
+          </Route>
+
+          <Route path="/profile">
+            <Header />
+            <Profile />
           </Route>
 
           <Route component={NotFound} />

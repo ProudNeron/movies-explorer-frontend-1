@@ -6,11 +6,10 @@ import './BurgerMenu.css';
 function BurgerMenu({ isOpen, closeHandler }) {
   return (
     <div className={`burger-menu ${isOpen ? 'burger-menu_is-open' : ''}`}>
-      <span
+      <button
         className="burger-menu__close-btn"
         onClick={closeHandler}
-        onKeyDown={closeHandler}
-        role="button"
+        type="button"
         tabIndex={0}
       />
 
