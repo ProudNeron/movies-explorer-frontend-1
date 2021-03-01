@@ -56,12 +56,20 @@
   display: inline;
 }
 
-.auth-form__submit-wrapper {
+.auth-form__submit-wrapper_type_signup {
   margin-top: 69px;
 }
 
+.auth-form__submit-wrapper_type_signin {
+  margin-top: 179px;
+}
+
 @media screen and (max-width: 425px) {
-  .auth-form__submit-wrapper {
+  .auth-form__submit-wrapper_type_signup {
     margin-top: 157px;
+  }
+
+  .auth-form__submit-wrapper_type_signin {
+    margin-top: 267px;
   }
 }
