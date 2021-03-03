@@ -114,8 +114,9 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 430px) {
   .about-project {
+    align-items: center;
     padding: 70px 18px;
   }
 

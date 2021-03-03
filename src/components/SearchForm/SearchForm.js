@@ -10,6 +10,7 @@ function SearchForm() {
           className="search-form__text-input"
           type="text"
           placeholder="Фильм"
+          required
         />
         <button className="search-form__button" type="submit">Найти</button>
       </div>
