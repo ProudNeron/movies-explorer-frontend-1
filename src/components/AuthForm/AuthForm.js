@@ -71,8 +71,8 @@ function AuthForm({
 
       </label>
       <div className={FormTypeLogin
-        ? '.auth-form__submit-wrapper auth-form__submit-wrapper_type_signin'
-        : '.auth-form__submit-wrapper auth-form__submit-wrapper_type_signup'}
+        ? 'auth-form__submit-wrapper auth-form__submit-wrapper_type_signin'
+        : 'auth-form__submit-wrapper auth-form__submit-wrapper_type_signup'}
       >
         {isSignUpError && <span className="auth-form__error">Ошибка при регистрации</span>}
         {isSignInError && <span className="auth-form__error">Вы не авторизированы</span>}

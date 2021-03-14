@@ -47,6 +47,7 @@
 
 .auth-form__error {
   display: inline;
+  margin-bottom: 10px;
   font-size: 10px;
   font-weight: 400;
   line-height: 1.2;

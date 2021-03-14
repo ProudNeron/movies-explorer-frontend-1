@@ -24,7 +24,7 @@ function useFormWithValidation() {
   );
 
   return {
-    values, handleChange, errors, isValid, resetForm,
+    values, setValues, handleChange, errors, isValid, setIsValid, resetForm,
   };
 }
 

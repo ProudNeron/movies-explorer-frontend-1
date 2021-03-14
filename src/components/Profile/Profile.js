@@ -1,22 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 import './Profile.css';
 
-function Profile() {
+function Profile({
+  currentUser, logOutHandler, changeUserInfo, editIsSuccess, editIsFailed,
+}) {
+  const {
+    values,
+    setValues,
+    handleChange,
+    errors,
+    isValid,
+    setIsValid,
+  } = useFormWithValidation();
+
+  useEffect(() => {
+    setValues(currentUser);
+    setIsValid(true);
+  }, [currentUser, setValues, setIsValid]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    changeUserInfo(values);
+  };
+
   return (
     <div className="profile">
-      <h2 className="profile__title">Привет, code reviewer :) !</h2>
-      <form className="profile__form">
+      <h2 className="profile__title">
+        Привет,
+        {' '}
+        {currentUser.name}
+        {' '}
+        !
+      </h2>
+      <form
+        className="profile__form"
+        onSubmit={submitHandler}
+        noValidate
+      >
         <label className="profile__form-label" htmlFor="name">
           Имя
           <input
             className="profile__form-input"
             id="name"
             required
+            minLength="2"
+            maxLength="30"
             name="name"
             type="text"
-            defaultValue="Сode reviewer"
             placeholder="Имя"
+            value={values.name || ''}
+            onChange={handleChange}
+            autoComplete="off"
           />
+          <span className="profile__form-error">{errors.name}</span>
         </label>
 
         <label className="profile__form-label" htmlFor="email">
@@ -27,14 +64,33 @@ function Profile() {
             required
             name="email"
             type="email"
-            defaultValue="pochta@yandex.ru"
             placeholder="Почта"
+            value={values.email || ''}
+            onChange={handleChange}
+            autoComplete="off"
           />
+          <span className="profile__form-error">{errors.email}</span>
         </label>
+        {editIsSuccess && <p className="profile__form-sbmt-success">Данные успешно изменены!</p>}
+        {editIsFailed && <p className="profile__form-sbmt-failed">Ошибка при изменении данных</p>}
 
-        <button type="submit" className="profile__form-submit">Редактировать</button>
+        <button
+          type="submit"
+          className={isValid
+            ? 'profile__form-submit profile__form-submit_is-active'
+            : 'profile__form-submit'}
+          disabled={!isValid}
+        >
+          Редактировать
+        </button>
       </form>
-      <button type="button" className="profile__logout-btn">Выйти из аккаунта</button>
+      <button
+        type="button"
+        className="profile__logout-btn"
+        onClick={logOutHandler}
+      >
+        Выйти из аккаунта
+      </button>
     </div>
   );
 }

@@ -30,8 +30,24 @@ class MainApi {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
+    })
+      .then((res) => checkResponse(res));
+  }
+
+  saveUserInfo(name, email) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+      }),
     })
       .then((res) => checkResponse(res));
   }
