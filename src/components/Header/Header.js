@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import SignInBtn from '../ui/SignInBtn/SignInBtn';
 import ProfileBtn from '../ui/ProfileBtn/ProfileBtn';
 import BurgerMenuBtn from '../ui/BurgerMenuBtn/BurgerMenuBtn';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
-import './Header.css';
 import MainLogoLink from '../ui/MainLogoLink/MainLogoLink';
+import './Header.css';
 
-// на 3м этапе сделать рефакторинг с условным рендером,
-// прим: {!isLoggedIn ? <SignInBtn /> : <ProfileBtn />}
-
-function Header() {
+function Header({ isLoggedIn, onLogoClick }) {
   const [width, setWidth] = useState(window.innerWidth);
 
   const updateWidth = () => {
@@ -31,35 +27,26 @@ function Header() {
   return (
     <header className="header">
 
-      <MainLogoLink />
+      <MainLogoLink onClick={onLogoClick} />
 
-      <Route path={['/movies', '/saved-movies', '/profile']}>
-        {isMobile ? (<BurgerMenuBtn handleClick={handleBurgerMenuClick} />) : null}
-      </Route>
+      {isLoggedIn && isMobile && <BurgerMenuBtn handleClick={handleBurgerMenuClick} />}
 
-      <Switch>
+      {!isLoggedIn && (
+        <div className="header__nav-wrapper header__nav-wrapper_type_unauth">
+          <Navigation isLoggedIn={isLoggedIn} />
+          <SignInBtn />
+        </div>
+      )}
 
-        <Route exact path="/">
-          <div className="header__nav-wrapper header__nav-wrapper_type_unauth">
-            <Navigation />
-            <SignInBtn />
-          </div>
-        </Route>
+      {!isMobile && isLoggedIn && (
+        <div className="header__nav-wrapper header__nav-wrapper_type_auth">
+          <Navigation isLoggedIn={isLoggedIn} />
+          <ProfileBtn />
+        </div>
+      )}
 
-        {!isMobile ? (
-          <Route path={['/movies', '/saved-movies', '/profile']}>
-            <div className="header__nav-wrapper header__nav-wrapper_type_auth">
-              <Navigation />
-              <ProfileBtn />
-            </div>
-          </Route>
-        ) : null}
+      {isLoggedIn && <BurgerMenu isOpen={isOpen} closeHandler={handleBurgerMenuClick} />}
 
-        <Route exact path={['/movies', '/saved-movies', '/profile']}>
-          <BurgerMenu isOpen={isOpen} closeHandler={handleBurgerMenuClick} />
-        </Route>
-
-      </Switch>
     </header>
   );
 }

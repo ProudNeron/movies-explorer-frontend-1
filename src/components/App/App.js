@@ -21,7 +21,6 @@ function App() {
   const [editIsSuccess, setEditIsSuccess] = useState(false);
   const [editIsFailed, setEditIsFailed] = useState(false);
   const [currentUserData, setCurrentUserData] = React.useState({});
-  console.log('isLoggedIn', isLoggedIn);
   console.log('currentUserData', currentUserData);
 
   useEffect(() => {
@@ -101,27 +100,27 @@ function App() {
       <div className="page-container">
         <CurrentUserContext.Provider value={currentUserData}>
 
+          <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
+            <Header isLoggedIn={isLoggedIn} onLogoClick={handleLogout} />
+          </Route>
+
           <Switch>
             <Route exact path="/">
-              <Header />
               <Main />
               <Footer />
             </Route>
 
             <Route path="/movies">
-              <Header />
               <Movies />
               <Footer />
             </Route>
 
             <Route path="/saved-movies">
-              <Header />
               <SavedMovies />
               <Footer />
             </Route>
 
             <Route path="/profile">
-              <Header />
               <Profile
                 currentUser={currentUserData}
                 logOutHandler={handleLogout}
@@ -147,7 +146,6 @@ function App() {
 
             <Route component={NotFound} />
           </Switch>
-
         </CurrentUserContext.Provider>
 
       </div>
