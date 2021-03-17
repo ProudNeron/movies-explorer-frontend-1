@@ -230,18 +230,6 @@ function App() {
     }, 600);
   };
 
-  // const searchInSavedHandler = (searchQuery) => {
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     setQuery(searchQuery);
-  //     console.log('searchQuery', searchQuery);
-  //     console.log('savedMovies', savedMovies);
-  //     console.log('filterSavedMovies', filterSavedMovies);
-  //     setFilterSavedMovies(searchFilter(savedMovies, searchQuery));
-  //     setIsLoading(false);
-  //   }, 600);
-  // };
-
   const addToBookmarks = (movie) => {
     mainApi
       .addBookmark(movie)
