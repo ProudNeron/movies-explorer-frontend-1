@@ -7,7 +7,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import MainLogoLink from '../ui/MainLogoLink/MainLogoLink';
 import './Header.css';
 
-function Header({ isLoggedIn, onLogoClick }) {
+function Header({ isLoggedIn }) {
   const [width, setWidth] = useState(window.innerWidth);
 
   const updateWidth = () => {
@@ -27,7 +27,7 @@ function Header({ isLoggedIn, onLogoClick }) {
   return (
     <header className="header">
 
-      <MainLogoLink onClick={onLogoClick} />
+      <MainLogoLink />
 
       {isLoggedIn && isMobile && <BurgerMenuBtn handleClick={handleBurgerMenuClick} />}
 

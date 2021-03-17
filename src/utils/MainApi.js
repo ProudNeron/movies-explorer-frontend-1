@@ -11,6 +11,17 @@ class MainApi {
     this._headers = options.headers;
   }
 
+  checkToken(token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => checkResponse(res));
+  }
+
   signUp(name, email, password) {
     return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
@@ -27,11 +38,12 @@ class MainApi {
     }).then((res) => checkResponse(res));
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
     })
       .then((res) => checkResponse(res));
@@ -43,10 +55,60 @@ class MainApi {
       headers: {
         authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({
         name,
         email,
+      }),
+    })
+      .then((res) => checkResponse(res));
+  }
+
+  getSavedMovies() {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'GET',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => checkResponse(res));
+  }
+
+  removeBookmark(movieId) {
+    return fetch(`${this._baseUrl}/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => checkResponse(res));
+  }
+
+  addBookmark(data) {
+    return fetch(`${this._baseUrl}/movies`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        country: data.country || 'unknown',
+        director: data.director || 'unknown',
+        duration: data.duration || 'No data',
+        year: data.year || 'unknown',
+        description: data.description || 'No description',
+        image: data.image,
+        trailer: data.trailerLink || 'No trailer',
+        thumbnail: data.image || 'No image',
+        movieId: data.id || 'No data',
+        nameRU: data.nameRU,
+        nameEN: data.nameEN || 'No name',
       }),
     })
       .then((res) => checkResponse(res));

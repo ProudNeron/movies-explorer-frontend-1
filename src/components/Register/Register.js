@@ -5,7 +5,7 @@ import MainLogoLink from '../ui/MainLogoLink/MainLogoLink';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 import './Register.css';
 
-function Register({ signUpHandler, isSignUpError }) {
+function Register({ signUpHandler, isSignUpError, onLogoClick }) {
   const formWithValidation = useFormWithValidation();
   const { name, email, password } = formWithValidation.values;
 
@@ -17,7 +17,7 @@ function Register({ signUpHandler, isSignUpError }) {
 
   return (
     <div className="register">
-      <MainLogoLink />
+      <MainLogoLink onClick={onLogoClick} />
       <h2 className="register__title">Добро пожаловать!</h2>
       <AuthForm
         onSubmit={submitHandler}

@@ -1,40 +1,53 @@
 import React from 'react';
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
-import getAllMovies from '../../utils/MoviesApi';
 
-function SearchForm() {
-  // const testSearch = () => {
-  //   getAllMovies()
-  //     .then((movies) => {
-  //       console.log(movies);
-  //     });
-  // };
+function SearchForm({ onFilterClick, onSearch, isLoading }) {
+  const formWithValidation = useFormWithValidation();
+  const { searchText } = formWithValidation.values;
+  const { handleChange, resetForm } = formWithValidation;
+  const [error, setError] = React.useState('');
 
-  async function testSearch() {
-    try {
-      const MovieData = await getAllMovies();
-      console.log(MovieData);
-    } catch (e) {
-      console.error(`DAMN!!!${e}`);
+  React.useEffect(() => {
+    resetForm();
+  }, [resetForm]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!searchText) {
+      setError('Нужно ввести ключевое слово');
+      setTimeout(() => {
+        setError('');
+      }, 2000);
+    } else {
+      onSearch(searchText);
+      resetForm();
     }
-  }
+  };
+
   return (
-    <div className="search-form">
+    <form className="search-form" noValidate onSubmit={handleSubmit}>
       <div className="search-form__search-input-wrapper">
         <input
+          name="searchText"
           className="search-form__text-input"
           type="text"
           placeholder="Фильм"
           required
+          value={searchText || ''}
+          onChange={handleChange}
+          autoComplete="off"
+          disabled={isLoading}
         />
-        <button className="search-form__button" type="submit" onClick={testSearch}>Найти</button>
+        {error && <span className="search-form__error">{error}</span>}
+        <button className="search-form__button" type="submit">Найти</button>
       </div>
       <div className="search-form__shorts-wrapper">
         <p className="search-form__shorts-title">Короткометражки</p>
-        <FilterCheckbox />
+        <FilterCheckbox onFilterClick={onFilterClick} />
       </div>
-    </div>
+    </form>
   );
 }
 

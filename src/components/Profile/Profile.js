@@ -76,10 +76,12 @@ function Profile({
 
         <button
           type="submit"
-          className={isValid
+          className={(isValid && (values.name !== currentUser.name
+            || values.email !== currentUser.email))
             ? 'profile__form-submit profile__form-submit_is-active'
             : 'profile__form-submit'}
-          disabled={!isValid}
+          disabled={(values.name === currentUser.name
+            && values.email === currentUser.email) || !isValid}
         >
           Редактировать
         </button>
