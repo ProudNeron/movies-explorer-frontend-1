@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Divider from '../ui/Divider/Divider';
@@ -19,9 +19,9 @@ function SavedMovies({
 
   const [moviesToRender, setMoviesToRender] = useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setMoviesToRender(movies);
-  }, []);
+  }, [movies]);
 
   const searchFilter = (data, searchQuery) => {
     if (searchQuery) {
