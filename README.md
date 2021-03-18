@@ -5,5 +5,5 @@
 `npm run start` — запускает проект локально
 
 ## Описание
-## Ссылка на фронт http://vlmovies.students.nomoredomains.rocks/
+## Ссылка на фронт http://http://vlg.nomoredomains.icu/
 
