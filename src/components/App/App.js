@@ -300,7 +300,6 @@ function App() {
               component={SavedMovies}
               savedMovies
               movies={savedMovies}
-              // onSubmitSearch={searchInSavedHandler}
               onBookmarkClick={bookmarkHandler}
               isMovieAdded={isMovieAdded}
             />
