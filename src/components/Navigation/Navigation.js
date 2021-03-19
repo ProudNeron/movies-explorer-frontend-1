@@ -1,45 +1,41 @@
 import React from 'react';
 import {
-  NavLink, Link, Switch, Route,
+  NavLink, Link,
 } from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation() {
-  // пропс isLoggedIn будет передаваться из App.js
-  // const isLoggedIn = false;
-
+function Navigation({ isLoggedIn }) {
   return (
     <nav className="navigation">
-      <Switch>
-        <Route exact path="/">
-          <Link
-            to="/signup"
+
+      {!isLoggedIn && (
+        <Link
+          to="/signup"
+          className="navigation__link"
+        >
+          Регистрация
+        </Link>
+      )}
+
+      {isLoggedIn && (
+        <>
+          <NavLink
+            to="/movies"
             className="navigation__link"
+            activeClassName="navigation__link_is-active"
           >
-            Регистрация
-          </Link>
-        </Route>
+            Фильмы
+          </NavLink>
 
-        <Route path={['/movies', '/saved-movies', '/profile']}>
-          <>
-            <NavLink
-              to="/movies"
-              className="navigation__link"
-              activeClassName="navigation__link_is-active"
-            >
-              Фильмы
-            </NavLink>
-
-            <NavLink
-              to="/saved-movies"
-              className="navigation__link"
-              activeClassName="navigation__link_is-active"
-            >
-              Сохранённые фильмы
-            </NavLink>
-          </>
-        </Route>
-      </Switch>
+          <NavLink
+            to="/saved-movies"
+            className="navigation__link"
+            activeClassName="navigation__link_is-active"
+          >
+            Сохранённые фильмы
+          </NavLink>
+        </>
+      )}
 
     </nav>
   );

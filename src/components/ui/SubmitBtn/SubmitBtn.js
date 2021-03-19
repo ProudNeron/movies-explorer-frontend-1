@@ -1,9 +1,16 @@
 import React from 'react';
 import './SubmitBtn.css';
 
-function SubmitBtn({ label }) {
+function SubmitBtn({ label, submitHandler, isDisabled }) {
   return (
-    <button type="submit" className="submit-btn">{label}</button>
+    <button
+      disabled={isDisabled}
+      type="submit"
+      className={isDisabled ? 'submit-btn' : 'submit-btn submit-btn_is-active'}
+      onSubmit={submitHandler}
+    >
+      {label}
+    </button>
   );
 }
 
