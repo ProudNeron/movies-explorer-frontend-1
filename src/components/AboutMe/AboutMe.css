@@ -87,7 +87,7 @@
 
 .about-me__photo {
   width: 270px;
-  height: 327px;
+  height: auto;
   border-radius: 10px;
 }
 
@@ -116,7 +116,7 @@
 
   .about-me__photo {
     width: 255px;
-    height: 307px;
+    height: auto;
   }
 }
 
@@ -137,7 +137,7 @@
   .about-me__photo {
     margin-bottom: 40px;
     width: 292px;
-    height: 352px;
+    height: auto;
   }
 }
 
@@ -161,7 +161,7 @@
   .about-me__photo {
     margin-bottom: 40px;
     width: 292px;
-    height: 352px;
+    height: auto;
   }
 
   .about-me__bio-title {
